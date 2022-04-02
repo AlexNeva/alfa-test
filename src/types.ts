@@ -31,3 +31,33 @@ export interface IPhotos {
   totalHits: number,
   hits: TPhoto[];
 }
+
+// redux
+
+export interface IPhotoState {
+  photos: TPhoto[],
+  loading: boolean,
+  error: null | string,
+}
+
+export enum PhotosActionTypes {
+  FETCH_PHOTOS = 'FETCH_PHOTOS',
+  FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS',
+  FETCH_PHOTOS_ERROR = 'FETCH_PHOTOS_ERROR',
+}
+
+interface IFetchPhotosAction {
+  type: PhotosActionTypes.FETCH_PHOTOS
+}
+interface IFetchPhotosSuccessAction {
+  type: PhotosActionTypes.FETCH_PHOTOS_SUCCESS,
+  payload: TPhoto[],
+}
+interface IFetchPhotosErrorAction {
+  type: PhotosActionTypes.FETCH_PHOTOS_ERROR,
+  payload: string,
+}
+
+export type TPhotosAction = IFetchPhotosAction | IFetchPhotosSuccessAction | IFetchPhotosErrorAction;
+
+// redux
