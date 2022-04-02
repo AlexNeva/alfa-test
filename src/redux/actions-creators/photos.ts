@@ -13,9 +13,7 @@ export const fetchPhotos = () => {
         dispatch({ type: PhotosActionTypes.FETCH_PHOTOS_SUCCESS, payload: res.hits })
       })
       .catch(err => {
-        dispatch({ type: PhotosActionTypes.FETCH_PHOTOS_ERROR, payload: 'ошибка' })
-        console.log(err);
-
+        dispatch({ type: PhotosActionTypes.FETCH_PHOTOS_ERROR, payload: err.message })
       })
   }
 }

@@ -2,7 +2,7 @@
   "name": "alfa-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexneva.github.io/",
+  "homepage": "https://alexneva.github.io/alfa-test/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.3",

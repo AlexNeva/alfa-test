@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { fetchPhotos } from '../../redux/actions-creators/photos';
 import CardItem from '../card-item/CardItem';
@@ -15,6 +15,12 @@ const CardList: FC = () => {
   useEffect(() => {
     dispatch(fetchPhotos());
   }, [])
+
+  useEffect(() => {
+    if (error) {
+      message.error(error)
+    }
+  }, [error])
 
   const showList = () => {
     if (showFavorited) {
