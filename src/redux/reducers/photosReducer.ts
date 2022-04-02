@@ -18,6 +18,8 @@ export const photosReducer = (state = initialState, action: TPhotosAction): IPho
       return { loading: true, error: action.payload, photos: [] }
     case PhotosActionTypes.TOGGLE_LIKE:
       return { ...state, photos: state.photos.map((item) => item.id === action.payload ? { ...item, isLike: !item.isLike } : item) }
+    case PhotosActionTypes.DELETE_ITEM:
+      return { ...state, photos: state.photos.filter((item) => item.id !== action.payload) }
     default:
       return state;
   }

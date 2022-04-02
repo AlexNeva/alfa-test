@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Spin } from 'antd';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { fetchPhotos } from '../../redux/actions-creators/photos';
 import CardItem from '../card-item/CardItem';
@@ -15,18 +16,26 @@ const CardList: FC = () => {
     dispatch(fetchPhotos());
   }, [])
 
+  const showList = () => {
+    if (showFavorited) {
+      return photos
+        .filter(photo => photo.isLike)
+        .map(photo => <CardItem {...photo} key={photo.id} />)
+    }
+
+    return photos.map(photo => (
+      <CardItem {...photo} key={photo.id} />
+    ))
+  }
+
   return (
     <ul className='card-list'>
       {
-        showFavorited
+        loading
           ?
-          photos
-            .filter(photo => photo.isLike)
-            .map(photo => <CardItem {...photo} key={photo.id} />)
+          <Spin size='large' />
           :
-          photos.map(photo => (
-            <CardItem {...photo} key={photo.id} />
-          ))
+          showList()
       }
     </ul>
   )

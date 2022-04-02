@@ -44,6 +44,7 @@ export enum PhotosActionTypes {
   FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS',
   FETCH_PHOTOS_ERROR = 'FETCH_PHOTOS_ERROR',
   TOGGLE_LIKE = 'TOGGLE_LIKE',
+  DELETE_ITEM = 'DELETE_ITEM'
 }
 
 export enum FilterActionTypes {
@@ -71,7 +72,12 @@ interface IFilterAction {
   type: FilterActionTypes.FILTER_FAVORITED
 }
 
-export type TPhotosAction = IFetchPhotosAction | IFetchPhotosSuccessAction | IFetchPhotosErrorAction | IToggleLikeAction
-export type TFilterAction = IFilterAction
+interface IDeleteAction {
+  type: PhotosActionTypes.DELETE_ITEM,
+  payload: number,
+}
+
+export type TPhotosAction = IFetchPhotosAction | IFetchPhotosSuccessAction | IFetchPhotosErrorAction | IToggleLikeAction | IDeleteAction;
+export type TFilterAction = IFilterAction;
 
 // redux

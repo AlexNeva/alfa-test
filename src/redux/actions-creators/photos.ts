@@ -21,3 +21,4 @@ export const fetchPhotos = () => {
 }
 
 export const toggleLike = (payload: number) => ({ type: PhotosActionTypes.TOGGLE_LIKE, payload })
+export const deleteItem = (payload: number) => ({ type: PhotosActionTypes.DELETE_ITEM, payload })

@@ -3,9 +3,9 @@ import { IPhoto } from '../../types';
 import { Tag } from 'antd';
 import uniqid from 'uniqid';
 import './CardItem.scss';
-import { HeartTwoTone } from '@ant-design/icons';
+import { DeleteFilled, HeartTwoTone } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { toggleLike } from './../../redux/actions-creators/photos'
+import { deleteItem, toggleLike } from './../../redux/actions-creators/photos'
 
 const CardItem: FC<IPhoto> = (props) => {
 
@@ -13,6 +13,10 @@ const CardItem: FC<IPhoto> = (props) => {
 
   const likesHandler = (): void => {
     dispatch(toggleLike(props.id))
+  }
+
+  const deleteHandler = (): void => {
+    dispatch(deleteItem(props.id))
   }
 
   return (
@@ -34,6 +38,18 @@ const CardItem: FC<IPhoto> = (props) => {
             twoToneColor={props.isLike ? '#FF0000' : '#FFFFFF'}
           />
         }
+      </button>
+      <button
+        type='button'
+        className='card-item__delete'
+        onClick={deleteHandler}
+      >
+        <DeleteFilled
+          style={{
+            fontSize: '24px',
+
+          }}
+        />
       </button>
       <div className="card-item__tags">
         {
