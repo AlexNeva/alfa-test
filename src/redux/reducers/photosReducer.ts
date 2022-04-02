@@ -1,4 +1,3 @@
-import Item from "antd/lib/list/Item";
 import { IPhotoState, PhotosActionTypes, TPhotosAction } from "../../types";
 
 

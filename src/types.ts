@@ -46,6 +46,10 @@ export enum PhotosActionTypes {
   TOGGLE_LIKE = 'TOGGLE_LIKE',
 }
 
+export enum FilterActionTypes {
+  FILTER_FAVORITED = 'FILTER_FAVORITED',
+}
+
 interface IFetchPhotosAction {
   type: PhotosActionTypes.FETCH_PHOTOS
 }
@@ -63,6 +67,11 @@ interface IToggleLikeAction {
   payload: number,
 }
 
+interface IFilterAction {
+  type: FilterActionTypes.FILTER_FAVORITED
+}
+
 export type TPhotosAction = IFetchPhotosAction | IFetchPhotosSuccessAction | IFetchPhotosErrorAction | IToggleLikeAction
+export type TFilterAction = IFilterAction
 
 // redux

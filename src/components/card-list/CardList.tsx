@@ -7,6 +7,7 @@ import './CardList.scss';
 
 const CardList: FC = () => {
   const { photos, error, loading } = useTypedSelector(state => state.photos);
+  const { showFavorited } = useTypedSelector(state => state.filter);
 
   const dispatch = useDispatch();
 
@@ -17,9 +18,15 @@ const CardList: FC = () => {
   return (
     <ul className='card-list'>
       {
-        photos.map(photo => (
-          <CardItem {...photo} key={photo.id} />
-        ))
+        showFavorited
+          ?
+          photos
+            .filter(photo => photo.isLike)
+            .map(photo => <CardItem {...photo} key={photo.id} />)
+          :
+          photos.map(photo => (
+            <CardItem {...photo} key={photo.id} />
+          ))
       }
     </ul>
   )
