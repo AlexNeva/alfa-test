@@ -3,7 +3,7 @@ import CardList from './components/card-list/CardList';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <CardList />
     </div>
   );
