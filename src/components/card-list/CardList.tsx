@@ -21,8 +21,6 @@ const CardList: FC = () => {
           <CardItem {...photo} key={photo.id} />
         ))
       }
-
-
     </ul>
   )
 }

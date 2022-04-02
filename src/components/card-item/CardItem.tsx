@@ -1,25 +1,37 @@
 import React, { FC } from 'react';
-import { TPhoto } from '../../types';
+import { IPhoto } from '../../types';
 import { Tag } from 'antd';
 import uniqid from 'uniqid';
 import './CardItem.scss';
 import { HeartTwoTone } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { toggleLike } from './../../redux/actions-creators/photos'
 
-const CardItem: FC<TPhoto> = (props) => {
+const CardItem: FC<IPhoto> = (props) => {
+
+  const dispatch = useDispatch();
+
+  const likesHandler = (): void => {
+    dispatch(toggleLike(props.id))
+  }
 
   return (
     <li className='card-item'>
       <div className="card-item__preview">
         <img src={props.previewURL} alt="photo" />
       </div>
-      <button type='button' className="card-item__like">
+      <button
+        type='button'
+        className="card-item__like"
+        onClick={likesHandler}
+      >
         {
           <HeartTwoTone
             style={{
               fontSize: '24px',
               color: 'red',
             }}
-            twoToneColor='#fff'
+            twoToneColor={props.isLike ? '#FF0000' : '#FFFFFF'}
           />
         }
       </button>

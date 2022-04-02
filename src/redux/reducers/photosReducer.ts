@@ -1,3 +1,4 @@
+import Item from "antd/lib/list/Item";
 import { IPhotoState, PhotosActionTypes, TPhotosAction } from "../../types";
 
 
@@ -16,6 +17,8 @@ export const photosReducer = (state = initialState, action: TPhotosAction): IPho
       return { loading: false, error: null, photos: action.payload }
     case PhotosActionTypes.FETCH_PHOTOS_ERROR:
       return { loading: true, error: action.payload, photos: [] }
+    case PhotosActionTypes.TOGGLE_LIKE:
+      return { ...state, photos: state.photos.map((item) => item.id === action.payload ? { ...item, isLike: !item.isLike } : item) }
     default:
       return state;
   }

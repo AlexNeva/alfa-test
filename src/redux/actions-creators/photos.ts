@@ -19,3 +19,5 @@ export const fetchPhotos = () => {
       })
   }
 }
+
+export const toggleLike = (payload: number) => ({ type: PhotosActionTypes.TOGGLE_LIKE, payload })
